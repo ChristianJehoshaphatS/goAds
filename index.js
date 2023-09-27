@@ -79,7 +79,7 @@ let jobs = [
     },
     {
         id: 7,
-        asset:['https://lzd-img-global.slatic.net/g/p/97a5baeb794b857f418351ac2c5d4e66.jpg_720x720q80.jpg'],
+        asset:['https://www.tukangjakbar.com/wp-content/uploads/sites/17/2021/06/30.-SEDOT-WC.jpg'],
         title: 'Jasa Sedot WC',
         itemName: 'Sedot Berkah',
         duration: 45,
@@ -89,7 +89,72 @@ let jobs = [
         status: 'available',
         category: 'jasa',
         recommend: 'yes'
-    }
+    },
+    {
+        id: 8,
+        asset:['https://www.badut.id/wp-content/uploads/2015/11/IMG_20150822_172002.jpg'],
+        title: 'Jasa Badut Ulangtahun',
+        itemName: 'Lucuin',
+        duration: 15,
+        target: '10 acara',
+        milestone:[2, 5, 10],
+        salary: 1_500_000,
+        status: 'available',
+        category: 'jasa',
+        recommend: 'no'
+    },
+    {
+        id: 9,
+        asset:['https://inaexport.id/uploads/Eksportir_Product/Image/7201/1618639677_Papertole%203D%20-%20Grebeg%20Gunungan_S2%20086%20-%20Gerebeg%20Gunungan.png','https://www.ponoko.com/blog/wp-content/uploads/2016/05/Vintage-Paper-Tole-2.jpg'],
+        title: 'Seni Kriya Papertole',
+        itemName: '5 Days Craft',
+        duration: 20,
+        target: '80 papertole terjual',
+        milestone:[10,40,60,80],
+        salary: 5_000_000,
+        status: 'available',
+        category: 'produk',
+        recommend: 'no'
+    },
+    {
+        id: 10,
+        asset:['https://lzd-img-global.slatic.net/g/p/d66f3c0e565851a5280b126d198ad346.jpg_720x720q80.jpg'],
+        title: 'Batik dan Daster',
+        itemName: 'Fashion Mpok Sukinah',
+        duration: 7,
+        target: '50 potong baju terjual',
+        milestone:[10, 20, 30, 40, 50],
+        salary: 1_000_000,
+        status: 'available',
+        category: 'produk',
+        recommend: 'no'
+    },
+    {
+        id: 11,
+        asset:['https://i0.wp.com/forestsnews.cifor.org/wp-content/uploads/2020/06/35104418773_ecf1afb468_k.jpg?resize=832%2C415&ssl=1'],
+        title: 'Pengrajin Kayu Mebel',
+        itemName: 'Sinar Jaya Furniture',
+        duration: 30,
+        target: '70 mebel kayu terjual',
+        milestone:[15, 45, 70],
+        salary: 7_000_000,
+        status: 'available',
+        category: 'produk',
+        recommend: 'no'
+    },
+    {
+        id: 12,
+        asset:['https://storage.googleapis.com/finansialku_media/wordpress_media/2019/10/9db0454a-waralaba-kursus-musik-bisnis-menggiurkan-yang-naik-daun-05.jpg'],
+        title: 'Les Musik',
+        itemName: 'Mahaya Music',
+        duration: 30,
+        target: '25 murid baru',
+        milestone:[5, 10, 20, 25],
+        salary: 3_000_000,
+        status: 'available',
+        category: 'jasa',
+        recommend: 'no'
+    } 
 ]
 
 function filter(jobs) {
@@ -136,7 +201,32 @@ function recommend(param) {
     }
 }
 
-console.log(recommend('produk'));
+function cards(param) {
+    const hasilFilter = filter(jobs)
+    let cardsJasa = []
+    let cardsProduk = []
+
+    for (key in hasilFilter) {
+        for (let i = 0; i < hasilFilter[key].length; i++) {
+            if (hasilFilter[key][i].recommend === 'no' && key === 'jasa') {
+                cardsJasa.push(hasilFilter[key][i])
+            }
+            if (hasilFilter[key][i].recommend === 'no' && key === 'produk') {
+                cardsProduk.push(hasilFilter[key][i])
+            }
+            
+        }
+    }
+
+    if (param === 'jasa') {
+        return cardsJasa
+    }
+    if (param === 'produk') {
+        return cardsProduk
+    }
+}
+
+console.log(cards('jasa'));
 
 function show() {
     
