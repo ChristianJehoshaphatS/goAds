@@ -157,22 +157,32 @@ let jobs = [
     } 
 ]
 
-function filter(jobs) {
+function filter(jobs, id) {
     let data = {
         jasa: [],
         produk: [],
         semua: []
     }
-    for (let i = 0; i < jobs.length; i++) {
-        if (jobs[i].category === 'jasa') {
-            data.jasa.push(jobs[i])
+    if (id === undefined) {
+        for (let i = 0; i < jobs.length; i++) {
+            if (jobs[i].category === 'jasa') {
+                data.jasa.push(jobs[i])
+            }
+            if (jobs[i].category === 'produk') {
+                data.produk.push(jobs[i])
+            }
+            data.semua.push(jobs[i])
         }
-        if (jobs[i].category === 'produk') {
-            data.produk.push(jobs[i])
+        return data
+    } else {
+        for (let i = 0; i < jobs.length; i++) {
+            if (jobs[i].id === id) {
+                return jobs[i]
+            }
+            
         }
-        data.semua.push(jobs[i])
     }
-    return data
+
 }
 
 
@@ -246,7 +256,7 @@ function showing(param) {
     
     // const recommendedDiv = document.getElementById('')
     const cardsDiv = document.getElementById('cards')
-    cardsDiv.innerHTML = ''
+    // cardsDiv.innerHTML = ''
 
     for (let i = 0; i < showRecommended.length; i++) {
         
@@ -267,7 +277,7 @@ function showing(param) {
 
 
         cardsDiv.innerHTML += `
-                <a href="#" class="card-box">
+                <div class="card-box" id="${showCards[i].id}" onclick="displayDetails(${showCards[i].id})">
                     <div class="card-header">
                         <img src="${showCards[i].asset[0]}" alt="">
                     </div>
@@ -277,7 +287,7 @@ function showing(param) {
                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam, aliquam minima consectetur tempore veniam doloribus quas voluptatibus ipsa quidem minus, non atque unde in beatae molestias, totam numquam eligendi. Aut.</p>
                         <p>Rp. ${showCards[i].salary}</p>
                     </div>
-                </a>
+                </div>
         `
         
         
@@ -290,4 +300,15 @@ function showing(param) {
     return output
 }
 
-showing('jasa')
+function displayDetails(params) {
+    const perId = filter(jobs, params)
+    const cardDetail = document.getElementById(params)
+    const detailPage = document.getElementById('details')
+    detailPage.innerHTML = `
+    
+    `
+    cardDetail.insertAdjacentElement('afterend', detailPage)
+
+
+
+}

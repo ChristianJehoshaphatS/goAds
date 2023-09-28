@@ -268,6 +268,12 @@ img,
     border-radius: 1em;
     background: #ECE9E6;
     background: linear-gradient(to right, #FFFFFF, #ECE9E6);
+    transition: 0.4s ease-in-out;
+}
+
+.card-box:hover {
+    scale: 1.05;
+    cursor:pointer;
 }
 
 .card img {
@@ -311,6 +317,13 @@ background: linear-gradient(to bottom, #FFD194, #D1913C);
   color: #fafafa;
 }
 
+.detail {
+    margin: 10rem;
+    border-radius: 3rem;
+    height: 80rem;
+    width: 90%;
+    background-color: var(--white);
+}
 
 
 /* FOOTER */
