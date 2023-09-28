@@ -144,7 +144,7 @@ let jobs = [
     },
     {
         id: 12,
-        asset:['https://storage.googleapis.com/finansialku_media/wordpress_media/2019/10/9db0454a-waralaba-kursus-musik-bisnis-menggiurkan-yang-naik-daun-05.jpg'],
+        asset:['https://id.yamaha.com/id/files/yms_for_adult_1200x480_617716d7715890330b4747baf27de82a.jpg'],
         title: 'Les Musik',
         itemName: 'Mahaya Music',
         duration: 30,
@@ -157,22 +157,32 @@ let jobs = [
     } 
 ]
 
-function filter(jobs) {
+function filter(jobs, id) {
     let data = {
         jasa: [],
         produk: [],
         semua: []
     }
-    for (let i = 0; i < jobs.length; i++) {
-        if (jobs[i].category === 'jasa') {
-            data.jasa.push(jobs[i])
+    if (id === undefined) {
+        for (let i = 0; i < jobs.length; i++) {
+            if (jobs[i].category === 'jasa') {
+                data.jasa.push(jobs[i])
+            }
+            if (jobs[i].category === 'produk') {
+                data.produk.push(jobs[i])
+            }
+            data.semua.push(jobs[i])
         }
-        if (jobs[i].category === 'produk') {
-            data.produk.push(jobs[i])
+        return data
+    } else {
+        for (let i = 0; i < jobs.length; i++) {
+            if (jobs[i].id === id) {
+                return jobs[i]
+            }
+            
         }
-        data.semua.push(jobs[i])
     }
-    return data
+
 }
 
 
@@ -192,7 +202,6 @@ function recommend(param) {
             
         }
     }
-
     if (param === 'jasa') {
         return recommendedJasa
     }
@@ -226,10 +235,91 @@ function cards(param) {
     }
 }
 
-console.log(cards('jasa'));
+// AddEventListeners
 
-function show() {
-    
+document.getElementById("serviceCategory").addEventListener("click", showing('jasa'));
+document.getElementById("productsCategory").addEventListener("click", showing('produk'));
+
+
+
+function showing(param) {
+    //show in recommended
+    const showRecommended = recommend(param)
+    //show in cards
+    const showCards = cards(param)
 
     // tampilkan hasil filter
+    let output = {
+        recommended: showRecommended,
+        card:showCards
+    }
+    
+    // const recommendedDiv = document.getElementById('')
+    const cardsDiv = document.getElementById('cards')
+    cardsDiv.innerHTML = ''
+
+    for (let i = 0; i < showRecommended.length; i++) {
+        
+        
+    }
+
+    for (let i = 0; i < showCards.length; i++) {
+        let toEnglish = ''
+        let tagBackground = ''
+        if (showCards[i].category === 'jasa') {
+        toEnglish = 'SERVICE'
+        tagBackground = 'tag-service'
+        } else if (showCards[i].category === 'produk') {
+        toEnglish = 'PRODUCT'
+        tagBackground = 'tag-product'
+
+        }
+
+
+        cardsDiv.innerHTML += `
+                <div class="card-box" id="${showCards[i].id}" onclick="displayDetails(${showCards[i].id})">
+                    <div class="card-header">
+                        <img src="${showCards[i].asset[0]}" alt="">
+                    </div>
+                    <div class="card-body">
+                        <span class="tag ${tagBackground}">${toEnglish}</span>
+                        <h4>${showCards[i].title}</h4>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam, aliquam minima consectetur tempore veniam doloribus quas voluptatibus ipsa quidem minus, non atque unde in beatae molestias, totam numquam eligendi. Aut.</p>
+                        <p>Rp. ${showCards[i].salary}</p>
+                    </div>
+                </div>
+        `
+        
+        
+    }
+
+
+
+
+
+    return output
+}
+
+function displayDetails(params) {
+    const perId = filter(jobs, params)
+    const cardDetail = document.getElementById(params)
+    const detailPage = document.getElementById('details')
+    // detailPage.style.height = '0px'
+    detailPage.innerHTML = `
+    
+    `
+    if (detailPage.classList.contains('shown')) {
+        detailPage.classList.remove('shown')
+        detailPage.classList.add ('hide')
+
+    } else {
+        detailPage.classList.remove('hide')
+        detailPage.classList.add ('shown')
+    }
+    cardDetail.insertAdjacentElement('afterend', detailPage)
+    // detailPage.style.height = '80rem'
+
+
+
+
 }

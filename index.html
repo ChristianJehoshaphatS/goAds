@@ -43,13 +43,13 @@
     <div class="kategori">
         <h2 class="judul">Kategori</h2>
         <div class="small-container">
-            <div class="single-items">
+            <div class="single-items" id="serviceCategory" onclick="showing('jasa')">
                 <img src="assets/cat/cat-1.webp" alt="">
                 <div class="content">
                     <h3>SERVICE</h3>
                 </div>
             </div>
-            <div class="single-items">
+            <div class="single-items" id="productsCategory" onclick="showing('produk')">
                 <img src="assets/cat/cat-2.webp" alt="">
                 <div class="content">
                     <h3>PRODUCTS</h3>
@@ -140,75 +140,16 @@
     </div> -->
     
     <!-- CARD START -->
-    <div class="card">
-        <a href="#" class="card-box">
-            <div class="card-header">
-                <img src="https://media.suara.com/pictures/970x544/2016/03/02/o_1acqifml01nr7e021raml351jjba.jpg" alt="">
-            </div>
-            <div class="card-body">
-                <span class="tag tag-service">SERVICE</span>
-                <h4>Jasa Amplas Ban Mobil</h4>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam, aliquam minima consectetur tempore veniam doloribus quas voluptatibus ipsa quidem minus, non atque unde in beatae molestias, totam numquam eligendi. Aut.</p>
-                <p>Rp. 50.000.000</p>
-            </div>
-        </a>
-        <a href="#" class="card-box">
-            <div class="card-header">
-                <img src="https://media.suara.com/pictures/970x544/2016/03/02/o_1acqifml01nr7e021raml351jjba.jpg" alt="">
-            </div>
-            <div class="card-body">
-                <span class="tag tag-product">SERVICE</span>
-                <h4>Jasa Amplas Ban Mobil</h4>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam, aliquam minima consectetur tempore veniam doloribus quas voluptatibus ipsa quidem minus, non atque unde in beatae molestias, totam numquam eligendi. Aut.</p>
-                <p>Rp. 50.000.000</p>
-            </div>
-        </a>
-        <a href="#" class="card-box">
-            <div class="card-header">
-                <img src="https://media.suara.com/pictures/970x544/2016/03/02/o_1acqifml01nr7e021raml351jjba.jpg" alt="">
-            </div>
-            <div class="card-body">
-                <span class="tag tag-product">SERVICE</span>
-                <h4>Jasa Amplas Ban Mobil</h4>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam, aliquam minima consectetur tempore veniam doloribus quas voluptatibus ipsa quidem minus, non atque unde in beatae molestias, totam numquam eligendi. Aut.</p>
-                <p>Rp. 50.000.000</p>
-            </div>
-        </a>
-        <a href="#" class="card-box">
-            <div class="card-header">
-                <img src="https://media.suara.com/pictures/970x544/2016/03/02/o_1acqifml01nr7e021raml351jjba.jpg" alt="">
-            </div>
-            <div class="card-body">
-                <span class="tag tag-service">SERVICE</span>
-                <h4>Jasa Amplas Ban Mobil</h4>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam, aliquam minima consectetur tempore veniam doloribus quas voluptatibus ipsa quidem minus, non atque unde in beatae molestias, totam numquam eligendi. Aut.</p>
-                <p>Rp. 50.000.000</p>
-            </div>
-        </a>
-        <a href="#" class="card-box">
-            <div class="card-header">
-                <img src="https://media.suara.com/pictures/970x544/2016/03/02/o_1acqifml01nr7e021raml351jjba.jpg" alt="">
-            </div>
-            <div class="card-body">
-                <span class="tag tag-service">SERVICE</span>
-                <h4>Jasa Amplas Ban Mobil</h4>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam, aliquam minima consectetur tempore veniam doloribus quas voluptatibus ipsa quidem minus, non atque unde in beatae molestias, totam numquam eligendi. Aut.</p>
-                <p>Rp. 50.000.000</p>
-            </div>
-        </a>
-        <a href="#" class="card-box">
-            <div class="card-header">
-                <img src="https://media.suara.com/pictures/970x544/2016/03/02/o_1acqifml01nr7e021raml351jjba.jpg" alt="">
-            </div>
-            <div class="card-body">
-                <span class="tag tag-service">SERVICE</span>
-                <h4>Jasa Amplas Ban Mobil</h4>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam, aliquam minima consectetur tempore veniam doloribus quas voluptatibus ipsa quidem minus, non atque unde in beatae molestias, totam numquam eligendi. Aut.</p>
-                <p>Rp. 50.000.000</p>
-            </div>
-        </a>
+    <div id="cards" class="card">
+        
     </div>
     <!-- CARD END -->
+    
+    
+    <!--  DETAILS ELEMENT-->
+    <div class="detail" id="details">
+        
+    </div>
     
     <!-- FOOTER START -->
     <div class="footer">
@@ -247,10 +188,7 @@
         </div>
     </div>
     <!-- FOOTER END -->
-    <script src="js/stylescript.js"></script>
-
-    <!-- back to top -->
-    <a href="#" id="scrollToTopButton" class="scroll-to-top">Top</a>
+    <script src="index.js"></script>
 </body>
 </html>
 
