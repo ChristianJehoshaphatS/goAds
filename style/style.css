@@ -380,6 +380,11 @@ img,
     display: none;
     text-align: center;
   }
+  .mySlides img{
+    object-fit: cover;
+    width: 100%;
+    height: 40rem;
+  }
 
   .btn-recommend {
     display: inline-block;
@@ -593,7 +598,7 @@ background: linear-gradient(to bottom, #FFD194, #D1913C);
     height: auto;
     width: 90%;
     background-color: var(--white);
-    animation: fadeIn 3s;
+    animation: fadeIn 1s;
   }
 
   .detail.shownRecommend {
@@ -603,7 +608,7 @@ background: linear-gradient(to bottom, #FFD194, #D1913C);
     height: auto;
     width: 78%;
     background-color: var(--white);
-    animation: fadeIn 3s;
+    animation: fadeIn 1s;
   }
 
   .detail.hide {
@@ -619,7 +624,7 @@ background: linear-gradient(to bottom, #FFD194, #D1913C);
     }
   
     to {
-        height: 100%;
+        height: 32rem;
         opacity: 1;
     }
   }
@@ -644,7 +649,7 @@ background: linear-gradient(to bottom, #FFD194, #D1913C);
     background: var(--accent);
     color: #FFFFFF;
     padding: 8px 30px;
-    margin: 1rem 0;
+    margin: 1rem 0 0 0;
     border-radius: 30px;
     cursor: pointer;
     transition: all .5s ease;
@@ -655,7 +660,7 @@ background: linear-gradient(to bottom, #FFD194, #D1913C);
     background: #C70039;
     color: #FFFFFF;
     padding: 8px 30px;
-    margin: 30px 0;
+    margin: 0;
     border-radius: 30px;
     cursor: pointer;
     transition: all .5s ease;
@@ -670,15 +675,15 @@ background: linear-gradient(to bottom, #FFD194, #D1913C);
 }
 
 .detail-img img {
-    height: 30rem;
+    height: 32rem;
     object-fit:inherit;
-    
+    margin: 0;
     width: 100%;
     padding: 0 3rem 0 0;
-    border-radius: 3rem 0;
+    border-radius: 3rem 3rem;
 }
 
-.milestone {
+/* .milestone {
     margin: 0 0 0 50%;
 }
 
@@ -688,6 +693,15 @@ background: linear-gradient(to bottom, #FFD194, #D1913C);
 
 .completeCancel {
     margin: 0 0 0 50%;
+} */
+
+.congrats {
+    height: 100%;
+    width: 100%;
+}
+
+.complete {
+    color: var(--accent);
 }
 
 

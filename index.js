@@ -21,7 +21,7 @@ let jobs = [
         deskripsi: 'Tolong sebarkan jasa kami kerumah-rumah yang membutuhkan jasa Cleaning Service dan kami hanya menyediakan jasa kami di kota Tangrang dan sekitarnya saja, lakukan pengiklanannya di TikTok, Instagram',
         duration: 14,
         target: '10 pelanggan baru',
-        milestone:[5, 8, 10],
+        milestone:[2, 5, 8, 10],
         salary: 1_000_000,
         status: 'available',
         category: 'jasa',
@@ -35,7 +35,7 @@ let jobs = [
         deskripsi: 'Kami ingin produk Kami bisa di ketahui oleh orang banyak dan kami siap menjual produk kami keseluruh indonesia , lakukan pengiklanan di seluruh platform media sosial',
         duration: 21,
         target: '1000 barang terjual',
-        milestone:[100, 500, 1000],
+        milestone:[100, 300, 500, 1000],
         salary: 4_000_000,
         status: 'available',
         category: 'produk',
@@ -63,7 +63,7 @@ let jobs = [
         deskripsi: 'Sebar luaskan produk Botol Reminder kami di seluruh platform media sosial',
         duration: 60,
         target: '500 botol terjual',
-        milestone:[100, 200, 300, 400, 500],
+        milestone:[200, 300, 400, 500],
         salary: 5_000_000,
         status: 'taken',
         category: 'produk',
@@ -77,7 +77,7 @@ let jobs = [
         deskripsi: 'Tolong sebar luaskan produkkami di seluruh platform media sosial dan berikan deskripsi pada produk kami agar terlihat menarik',
         duration: 30,
         target: '800 unit terjual',
-        milestone:[200,500,800],
+        milestone:[200,400,600,800],
         salary: 5_000_000,
         status: 'available',
         category: 'produk',
@@ -91,7 +91,7 @@ let jobs = [
         deskripsi:'Butuh agen iklan untuk memperluas operasi sedot WC kami, mohon buat draft strategi pemasaran usaha sedot WC. Eksekusi pengiklanan kami serahkan seluruhnya kepada anda.',
         duration: 45,
         target: '30 order diterima',
-        milestone:[5, 15, 30],
+        milestone:[5, 15,25, 30],
         salary: 8_000_000,
         status: 'available',
         category: 'jasa',
@@ -105,7 +105,7 @@ let jobs = [
         deskripsi:'Sebarkan informasi jasa sewa badut kami di berbagai media sosial seperti Instagram, Tiktok, Facebook, dll. ',
         duration: 15,
         target: '10 acara berjalan',
-        milestone:[2, 5, 10],
+        milestone:[2, 5,7, 10],
         salary: 1_500_000,
         status: 'taken',
         category: 'jasa',
@@ -133,7 +133,7 @@ let jobs = [
         deskripsi:'Sebarkan katalog busana batik dan daster kami ke berbagai media sosial seperti Twitter, Facebook, TikTok',
         duration: 7,
         target: '50 baju terjual',
-        milestone:[10, 20, 30, 40, 50],
+        milestone:[10, 25, 40, 50],
         salary: 1_000_000,
         status: 'available',
         category: 'produk',
@@ -147,7 +147,7 @@ let jobs = [
         deskripsi:'Rekomendasikan mebel kami di berbagai platform media sosial kepada orang-orang yang sedang mencari mebel untuk interior ruangan',
         duration: 30,
         target: '70 mebel terjual',
-        milestone:[15, 45, 70],
+        milestone:[15, 30,50, 70],
         salary: 7_000_000,
         status: 'available',
         category: 'produk',
@@ -301,7 +301,9 @@ function showing(param) {
     const recommendedDiv = document.getElementById('recomend')
     const cardsDiv = document.getElementById('cards')
     cardsDiv.innerHTML = ''
-    recommendedDiv.innerHTML = ''
+    recommendedDiv.innerHTML = `
+    <h2 class="judul">Recommended</h2>
+    `
 
         let toEnglish = ''
         let tagBackground = ''
@@ -318,6 +320,7 @@ function showing(param) {
         }
         
         recommendedDiv.innerHTML += `
+
         <div class="mySlides fade" id="${showRecommended[i].id}">
             <img src="${showRecommended[i].asset[0]}" style="width:100%">
             <p class="text"><span>[${toEnglish}]</span>${showRecommended[i].title}</p>
@@ -394,7 +397,8 @@ function displayDetails(params, fromRecommend = false) {
         toEnglish = "PRODUCT"
     }
 
-
+    let milestoneText = perId.target.split(' ')
+    let milestoneNumber = perId.milestone
     
     newdetail.id = `detail${params}`
     idDetailsOld = newdetail.id
@@ -419,24 +423,14 @@ function displayDetails(params, fromRecommend = false) {
                 </div>
                 <a id="acceptBtn" class="btn-accept" onclick="showMilestone(${perId.id}, 'show')">Accept &#x2794;</a>
                 <br>
-
-                      
-    `
-
-    //milestone
-    
-    for (let i = 0; i < perId.milestone.length; i++) {
-        let milestoneText = perId.target.split(' ')
-        let milestoneNumber = `${perId.milestone[i]}`
-        let milestoneNumberText = `${perId.milestone[i]} ${milestoneText[1]} ${milestoneText[2]}`
-        newdetail.innerHTML += `
-                <input class="milestone" style="display: none" type="checkbox" id="${milestoneNumber}" name="${milestoneNumber}${milestoneText[1]}${milestoneText[2]}" value="">
-                <label style="display: none" id="${milestoneNumber}l" for="${milestoneNumber}${milestoneText[1]}${milestoneText[2]}">${milestoneNumberText}</label><br>
-        `
-    }
-
-    newdetail.innerHTML += `
-
+                <input style="display: none" type="checkbox" id="${milestoneNumber[0]}" name="${milestoneNumber[0]}${milestoneText[1]}${milestoneText[2]}" value="">
+                <label style="display: none" id="${milestoneNumber[0]}l" for="${milestoneNumber[0]}${milestoneText[1]}${milestoneText[2]}">${perId.milestone[0]} ${milestoneText[1]} ${milestoneText[2]}</label><br>
+                <input style="display: none" type="checkbox" id="${milestoneNumber[1]}" name="${milestoneNumber[1]}${milestoneText[1]}${milestoneText[2]}" value="">
+                <label style="display: none" id="${milestoneNumber[1]}l" for="${milestoneNumber[1]}${milestoneText[1]}${milestoneText[2]}">${perId.milestone[1]} ${milestoneText[1]} ${milestoneText[2]}</label><br>
+                <input style="display: none" type="checkbox" id="${milestoneNumber[2]}" name="${milestoneNumber[2]}${milestoneText[1]}${milestoneText[2]}" value="">
+                <label style="display: none" id="${milestoneNumber[2]}l" for="${milestoneNumber[2]}${milestoneText[1]}${milestoneText[2]}">${perId.milestone[2]} ${milestoneText[1]} ${milestoneText[2]}</label><br>
+                <input style="display: none" type="checkbox" id="${milestoneNumber[3]}" name="${milestoneNumber[3]}${milestoneText[1]}${milestoneText[2]}" value="">
+                <label style="display: none" id="${milestoneNumber[3]}l" for="${milestoneNumber[3]}${milestoneText[1]}${milestoneText[2]}">${perId.milestone[3]} ${milestoneText[1]} ${milestoneText[2]}</label><br>
 
                 <!-- Complete / Cancel -->
                 <div id="compcanBtn" class="btn-compcan completeCancel" style="display: none;">
@@ -445,8 +439,19 @@ function displayDetails(params, fromRecommend = false) {
                 </div>
             </div>
         </div>
-
     `
+
+    //milestone
+    
+    // for (let i = 0; i < perId.milestone.length; i++) {
+        
+    //     newdetail.innerHTML += `
+    //             <input class="milestone" style="display: none" type="checkbox" id="${milestoneNumber}" name="${milestoneNumber}${milestoneText[1]}${milestoneText[2]}" value="">
+    //             <label style="display: none" id="${milestoneNumber}l" for="${milestoneNumber}${milestoneText[1]}${milestoneText[2]}">${milestoneNumberText}</label><br>
+    //     `
+    // }
+
+   
     if (fromRecommend === false) {
         if (newdetail.classList.contains('shown')) {
             newdetail.classList.remove('shown')
@@ -514,7 +519,8 @@ function showMilestone(params, toggle) {
 }
 
 function completeOrder(param) {
-    console.log(param);
+    const perId = filter(jobs, param)
+    const milestones = perId.milestone
 
     let temp = []
     for (let i = 0; i < jobs.length; i++) {
@@ -522,17 +528,30 @@ function completeOrder(param) {
             temp.push(jobs[i])
         } 
     }
+    const completeArea = document.getElementById('compcanBtn')
+    document.getElementById('statusBtn').innerHTML = 'Status: <span class="complete">Completed</span>'
+
+    for (let i = 0; i < milestones.length; i++) {
+        const eachMilestone = document.getElementById(milestones[i])
+        const eachMilestoneLabel = document.getElementById(`${milestones[i]}l`)
+
+        eachMilestone.style.display = 'none'
+        eachMilestoneLabel.style.display = 'none'
+    }
+
+
+    completeArea.innerHTML = `
+    <div class="congrats">Congratulations for Completing ${jobs[param-1].title}</div>
+    <div class="btn" onclick="deleteDetail()">Browse Other Jobs</div>
+
+    `
     jobs = temp
     showing(nowShowing)
-    // delete database
-    // jalanin function show lagi
-    const completeArea = document.getElementById('compcanBtn')
-    document.getElementById('statusBtn').innerHTML = 'Status: Completed'
-    completeArea.innerHTML = 'congrats'
+
 
 }
 
-function deleteDetail(params) {
+function deleteDetail() {
     if (document.getElementById(idDetailsOld)) {
         const oldDetail = document.getElementById(idDetailsOld)
         oldDetail.remove()
