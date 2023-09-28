@@ -494,7 +494,6 @@ img,
 }
 
 
-
 /* CARDS */
 .card {
     display: flex;
@@ -637,6 +636,43 @@ background: linear-gradient(to bottom, #FFD194, #D1913C);
         opacity: 0;
     }
   }
+
+
+/* DETAIL */
+.detail-wrapper {
+    display: flex;
+    flex-direction: row;
+    margin: 0 auto;
+}
+
+.img-show {
+    width: 100%;
+    margin: 0 auto;
+}
+
+.display-img {
+    overflow: hidden;
+}
+
+.img-showcase {
+    display: flex;
+    width: 100%;
+    transition: all 0.5s ease;
+}
+
+.img-showcase img {
+    min-width: 100%;
+}
+
+.img-select {
+    display: flex;
+    flex-direction: row;
+}
+
+.img-item {
+    margin: .3rem;
+}
+
 
 
 /* TESTIMONIAL */
