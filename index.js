@@ -316,10 +316,10 @@ function showing(param) {
         }
         
         recommendedDiv.innerHTML += `
-        <div class="mySlides fade">
+        <div class="mySlides fade" id="${showRecommended[i].id}">
             <img src="${showRecommended[i].asset[0]}" style="width:100%">
             <p class="text"><span>[${toEnglish}]</span>${showRecommended[i].title}</p>
-            <a href="#" class="btn-recommend">See Detail</a>
+            <a onclick="displayDetails(${showRecommended[i].id}, true)" class="btn-recommend">See Detail</a>
         </div>
         `
     }
@@ -369,16 +369,18 @@ function showing(param) {
     return output
 }
 
-let idDetailsOld = 0;
+var idDetailsOld = 0;
 
-function displayDetails(params) {
+function displayDetails(params, fromRecommend = false) {
     const perId = filter(jobs, params)
     const cardDetail = document.getElementById(params)
+    const recommendDetail = document.getElementById('recomend')
     const newdetail = document.createElement('div')
     if (document.getElementById(idDetailsOld)) {
         const oldDetail = document.getElementById(idDetailsOld)
         oldDetail.remove()
     }
+    console.log(perId);
 
     newdetail.id = `detail${params}`
     idDetailsOld = newdetail.id
@@ -387,16 +389,32 @@ function displayDetails(params) {
     newdetail.innerHTML = `
     
     `
-    if (newdetail.classList.contains('shown')) {
-        newdetail.classList.remove('shown')
-        newdetail.classList.add('hide')
+    
 
+    if (fromRecommend === false) {
+        if (newdetail.classList.contains('shown')) {
+            newdetail.classList.remove('shown')
+            newdetail.classList.add('hide')
+    
+        } else {
+            newdetail.classList.remove('hide')
+            newdetail.classList.add('shown')
+            console.log(newdetail);
+        }
+        cardDetail.insertAdjacentElement('afterend', newdetail)
+        
     } else {
-        newdetail.classList.remove('hide')
-        newdetail.classList.add('shown')
-        console.log(newdetail);
+        if (newdetail.classList.contains('shownRecommend')) {
+            newdetail.classList.remove('shownRecommend')
+            newdetail.classList.add('hide')
+    
+        } else {
+            newdetail.classList.remove('hide')
+            newdetail.classList.add('shownRecommend')
+            console.log(newdetail);
+        }
+        recommendDetail.insertAdjacentElement('afterend', newdetail)
     }
 
-    cardDetail.insertAdjacentElement('afterend', newdetail)
 
 }
