@@ -144,7 +144,7 @@ let jobs = [
     },
     {
         id: 12,
-        asset:['https://storage.googleapis.com/finansialku_media/wordpress_media/2019/10/9db0454a-waralaba-kursus-musik-bisnis-menggiurkan-yang-naik-daun-05.jpg'],
+        asset:['https://id.yamaha.com/id/files/yms_for_adult_1200x480_617716d7715890330b4747baf27de82a.jpg'],
         title: 'Les Musik',
         itemName: 'Mahaya Music',
         duration: 30,
@@ -256,7 +256,7 @@ function showing(param) {
     
     // const recommendedDiv = document.getElementById('')
     const cardsDiv = document.getElementById('cards')
-    // cardsDiv.innerHTML = ''
+    cardsDiv.innerHTML = ''
 
     for (let i = 0; i < showRecommended.length; i++) {
         
@@ -282,7 +282,7 @@ function showing(param) {
                         <img src="${showCards[i].asset[0]}" alt="">
                     </div>
                     <div class="card-body">
-                        <span class="tag tag-service">${toEnglish}</span>
+                        <span class="tag ${tagBackground}">${toEnglish}</span>
                         <h4>${showCards[i].title}</h4>
                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam, aliquam minima consectetur tempore veniam doloribus quas voluptatibus ipsa quidem minus, non atque unde in beatae molestias, totam numquam eligendi. Aut.</p>
                         <p>Rp. ${showCards[i].salary}</p>
