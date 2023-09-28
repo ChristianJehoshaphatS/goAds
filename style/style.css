@@ -367,13 +367,14 @@ img,
 
 /* SCROLL TO TOP */
 .scroll-to-top {
+    font-size: 2rem;
     position: fixed;
     bottom: 20px;
     right: 20px;
     width: 50px;
     height: 50px;
-    background-color: var(--black);
-    color: var(--white);
+    background-color: var(--accent);
+    color: var(--secondary1);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -461,6 +462,17 @@ background: linear-gradient(to bottom, #2F80ED, #56CCF2);
 background: linear-gradient(to bottom, #FFD194, #D1913C);
   color: #fafafa;
 }
+
+.tag-available {
+  /* background: linear-gradient(to bottom, #FFD194, #D1913C); */background: green;
+    color: #fafafa;
+  }
+
+  .tag-taken {
+  /* background: linear-gradient(to bottom, #FFD194, #D1913C); */
+  background:orangered;
+    color: #fafafa;
+  }
 
 
 .detail {

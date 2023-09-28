@@ -99,7 +99,7 @@ let jobs = [
         target: '10 acara',
         milestone:[2, 5, 10],
         salary: 1_500_000,
-        status: 'available',
+        status: 'taken',
         category: 'jasa',
         recommend: 'no'
     },
@@ -112,7 +112,7 @@ let jobs = [
         target: '80 papertole terjual',
         milestone:[10,40,60,80],
         salary: 5_000_000,
-        status: 'available',
+        status: 'taken',
         category: 'produk',
         recommend: 'no'
     },
@@ -237,8 +237,8 @@ function cards(param) {
 
 // AddEventListeners
 
-document.getElementById("serviceCategory").addEventListener("click", showing('jasa'));
-document.getElementById("productsCategory").addEventListener("click", showing('produk'));
+// document.getElementById("serviceCategory").addEventListener("click", showing('jasa'));
+// document.getElementById("productsCategory").addEventListener("click", showing('produk'));
 
 
 
@@ -266,15 +266,21 @@ function showing(param) {
     for (let i = 0; i < showCards.length; i++) {
         let toEnglish = ''
         let tagBackground = ''
+        let availabletag = ''
         if (showCards[i].category === 'jasa') {
         toEnglish = 'SERVICE'
         tagBackground = 'tag-service'
         } else if (showCards[i].category === 'produk') {
         toEnglish = 'PRODUCT'
         tagBackground = 'tag-product'
-
         }
 
+        if (showCards[i].status === 'available') {
+            availabletag = 'tag-available'
+        }
+        if (showCards[i].status === 'taken') {
+            availabletag = 'tag-taken'
+        } 
 
         cardsDiv.innerHTML += `
                 <div class="card-box" id="${showCards[i].id}" onclick="displayDetails(${showCards[i].id})">
@@ -286,40 +292,45 @@ function showing(param) {
                         <h4>${showCards[i].title}</h4>
                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam, aliquam minima consectetur tempore veniam doloribus quas voluptatibus ipsa quidem minus, non atque unde in beatae molestias, totam numquam eligendi. Aut.</p>
                         <p>Rp. ${showCards[i].salary}</p>
+                        <span class="tag ${availabletag}">${showCards[i].status}</span><br><br>
+
                     </div>
                 </div>
         `
         
         
     }
-
-
-
-
-
     return output
 }
+
+let idDetailsOld = 0;
 
 function displayDetails(params) {
     const perId = filter(jobs, params)
     const cardDetail = document.getElementById(params)
-    const detailPage = document.getElementById('details')
-    // detailPage.style.height = '0px'
-    detailPage.innerHTML = `
+    const newdetail = document.createElement('div')
+    if (document.getElementById(idDetailsOld)) {
+        const oldDetail = document.getElementById(idDetailsOld)
+        oldDetail.remove()
+    }
+
+    newdetail.id = `detail${params}`
+    idDetailsOld = newdetail.id
+    newdetail.classList.add(`detail`)
+
+    newdetail.innerHTML = `
     
     `
-    if (detailPage.classList.contains('shown')) {
-        detailPage.classList.remove('shown')
-        detailPage.classList.add ('hide')
+    if (newdetail.classList.contains('shown')) {
+        newdetail.classList.remove('shown')
+        newdetail.classList.add('hide')
 
     } else {
-        detailPage.classList.remove('hide')
-        detailPage.classList.add ('shown')
+        newdetail.classList.remove('hide')
+        newdetail.classList.add('shown')
+        console.log(newdetail);
     }
-    cardDetail.insertAdjacentElement('afterend', detailPage)
-    // detailPage.style.height = '80rem'
 
-
-
+    cardDetail.insertAdjacentElement('afterend', newdetail)
 
 }
