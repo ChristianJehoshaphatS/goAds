@@ -285,6 +285,8 @@ function showSlides(n) {
 
 
 function showing(param) {
+    alert('halo')
+
     //show in recommended
     const showRecommended = recommend(param)
     //show in cards
@@ -347,7 +349,6 @@ function showing(param) {
         if (showCards[i].status === 'taken') {
             availabletag = 'tag-taken'
         } 
-
         cardsDiv.innerHTML += `
                 <div class="card-box" id="${showCards[i].id}" onclick="displayDetails(${showCards[i].id})">
                     <div class="card-header">
@@ -371,6 +372,10 @@ function showing(param) {
 
 var idDetailsOld = 0;
 
+
+//display details
+
+
 function displayDetails(params, fromRecommend = false) {
     const perId = filter(jobs, params)
     console.log(perId);
@@ -388,55 +393,28 @@ function displayDetails(params, fromRecommend = false) {
     idDetailsOld = newdetail.id
     newdetail.classList.add(`detail`)
     newdetail.innerHTML = `
-    <div class="product-img">
-        <div class="display-img">
-            <div class="img-showcase">
-                <img src="assets/product/product-1.webp" alt="">
-                <img src="assets/product/product-1.webp" alt="">
-                <img src="assets/product/product-1.webp" alt="">
-                <img src="assets/product/product-1.webp" alt="">
+
+    <div class="small-container">
+            <div class="detail-img">
+                <img src="${perId.asset[0]}" class="gambar-sepatu">
             </div>
-        </div>
-        <div class="img-select">
-            <div class="img-item">
-                <a href="#" data-id="1">
-                    <img src="assets/product/product-item-1.jpeg" alt="">
-                </a>
-            </div>
-            <div class="img-item">
-                <a href="#" data-id="2">
-                    <img src="assets/product/product-item-1.jpeg" alt="">
-                </a>
-            </div>
-            <div class="img-item">
-                <a href="#" data-id="3">
-                    <img src="assets/product/product-item-1.jpeg" alt="">
-                </a>
-            </div>
-            <div class="img-item">
-                <a href="#" data-id="4">
-                    <img src="assets/product/product-item-1.jpeg" alt="">
-                </a>
-            </div>
-        </div>
-    </div>
-                <div class="product-content">
-                    <h2 class="product-title">${perId.category}</h2>
-                    
-                    <div class="product-detail">
-                        <h2>${perId.title}</h2>
-                        <p>${perId.deskripsi}</p>
-                        <p>Duration: ${perId.duration}</p>
-                        <p>Target: ${perId.target}</p>
-                        <div class="product-price">
-                            <p class="price">Rp ${perId.salary}</p>
-                        </div>
-                        <button class="btn-accept" onclick="showMilestone(${perId.id})">Accept</button>
-                        
-                        
-                        
+            <div class="col-2">
+                <h1>${perId.category}</h1>
+                <h3>${perId.title}</h3>
+                <small>${perId.deskripsi}</small>
+                <p>Duration: ${perId.duration} days</p>
+                <p>Target: ${perId.target}</p>
+                <div class="price">
+                    <p class="price">Price: Rp. ${perId.salary}</p>
+                </div>
+                <a id="acceptBtn" class="btn-accept" onclick="showMilestone(${perId.id}, 'show')">Accept &#x2794;</a>
+                <br>
+
+                
+                 
     `
 
+    //milestone
     
     for (let i = 0; i < perId.milestone.length; i++) {
         let milestoneText = perId.target.split(' ')
@@ -447,35 +425,25 @@ function displayDetails(params, fromRecommend = false) {
         newdetail.innerHTML += `
                 <input style="display: none" type="checkbox" id="${milestoneNumber}" name="${milestoneNumber}${milestoneText[1]}${milestoneText[2]}" value="">
                 <label style="display: none" id="${milestoneNumber}l" for="${milestoneNumber}${milestoneText[1]}${milestoneText[2]}">${milestoneNumberText}</label><br>
-                
         `
     }
 
     newdetail.innerHTML += `
-    
-    
-    <!-- Complete / Cancel -->
-    <div id="compcanBtn" class="btn-compcan" style="display: none;">
-        <button class="btn-complete">Complete Order</button>
-        <button class="btn-cancel">Cancel Order</button>
-    </div>
-</div>
-</div>
+
+
+                <!-- Complete / Cancel -->
+                <div id="compcanBtn" class="btn-compcan" style="display: none;">
+                    <button onclick="completeOrder()" class="btn-complete">Complete Order</button>
+                    <button onclick="showMilestone(${perId.id}, 'hide')" class="btn-cancel">Cancel Order</button>
+                </div>
+            </div>
+        </div>
 
     `
 
     
    
-    // images
-
-    for (let i = 0; i < perId.asset.length; i++) {
-        let imageLink = perId.asset[i]
-        newdetail.innerHTML += `
-        <img src="${imageLink}">
-        `
-    }
-    //milestone
-    
+    // images   
 
     if (fromRecommend === false) {
         if (newdetail.classList.contains('shown')) {
@@ -505,20 +473,48 @@ function displayDetails(params, fromRecommend = false) {
 
 }
 
-function showMilestone(params) {
+function showMilestone(params, toggle) {
     const perId = filter(jobs, params)
     perId.status = 'taken'
     const milestones = perId.milestone
-    console.log(milestones);
-    for (let i = 0; i < milestones.length; i++) {
-        const eachMilestone = document.getElementById(milestones[i])
-        const eachMilestoneLabel = document.getElementById(`${milestones[i]}l`)
 
-        eachMilestone.style=''
-        eachMilestoneLabel.style=''
+    if (toggle === 'show') {
+        console.log('show');
+        for (let i = 0; i < milestones.length; i++) {
+            const eachMilestone = document.getElementById(milestones[i])
+            const eachMilestoneLabel = document.getElementById(`${milestones[i]}l`)
+            const accept = document.getElementById('acceptBtn')
+            accept.style.display = 'none'
+    
+            eachMilestone.style=''
+            eachMilestoneLabel.style=''
+        }
+        const compCanBtn = document.getElementById('compcanBtn')
+        compCanBtn.style=''
+    } else if (toggle === 'hide'){
+        console.log('hide');
+
+        for (let i = 0; i < milestones.length; i++) {
+            const eachMilestone = document.getElementById(milestones[i])
+            const eachMilestoneLabel = document.getElementById(`${milestones[i]}l`)
+            const accept = document.getElementById('acceptBtn')
+
+            accept.style=''
+            eachMilestone.style.display = 'none'
+            eachMilestoneLabel.style.display = 'none'
+        }
+        const compCanBtn = document.getElementById('compcanBtn')
+        compCanBtn.style.display = 'none'
     }
-    const compCanBtn = document.getElementById('compcanBtn')
-    compCanBtn.style=''
+    
 }
 
-showMilestone
+function completeOrder() {
+    // delete database
+    // jalanin function show lagi
+
+    if (document.getElementById(idDetailsOld)) {
+        const oldDetail = document.getElementById(idDetailsOld)
+        oldDetail.remove()
+    }
+}
