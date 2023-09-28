@@ -252,6 +252,36 @@ function cards(param) {
 // document.getElementById("serviceCategory").addEventListener("click", showing('jasa'));
 // document.getElementById("productsCategory").addEventListener("click", showing('produk'));
 
+// RECOMMEND SLIDESHOW
+let slideIndex = 1;
+showSlides(slideIndex);
+
+// Next/previous controls
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
+
+// Thumbnail image controls
+function currentSlide(n) {
+  showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+  let i;
+  let slides = document.getElementsByClassName("mySlides");
+  let dots = document.getElementsByClassName("dot");
+  if (n > slides.length) {slideIndex = 1}
+  if (n < 1) {slideIndex = slides.length}
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";
+  }
+  for (i = 0; i < dots.length; i++) {
+    dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex-1].style.display = "block";
+  dots[slideIndex-1].className += " active";
+}
+
 
 
 function showing(param) {
@@ -266,26 +296,50 @@ function showing(param) {
         card:showCards
     }
     
-    // const recommendedDiv = document.getElementById('')
+    const recommendedDiv = document.getElementById('recomend')
     const cardsDiv = document.getElementById('cards')
     cardsDiv.innerHTML = ''
+    recommendedDiv.innerHTML = ''
 
-    for (let i = 0; i < showRecommended.length; i++) {
-        
-        
-    }
-
-    for (let i = 0; i < showCards.length; i++) {
         let toEnglish = ''
         let tagBackground = ''
         let availabletag = ''
+       
+
+    for (let i = 0; i < showRecommended.length; i++) {
         if (showCards[i].category === 'jasa') {
-        toEnglish = 'SERVICE'
-        tagBackground = 'tag-service'
-        } else if (showCards[i].category === 'produk') {
-        toEnglish = 'PRODUCT'
-        tagBackground = 'tag-product'
+            toEnglish = 'SERVICE'
+            tagBackground = 'tag-service'
+            } else if (showCards[i].category === 'produk') {
+            toEnglish = 'PRODUCT'
+            tagBackground = 'tag-product'
         }
+        
+        recommendedDiv.innerHTML += `
+        <div class="mySlides fade">
+            <img src="${showRecommended[i].asset[0]}" style="width:100%">
+            <p class="text"><span>[${toEnglish}]</span>${showRecommended[i].title}</p>
+            <a href="#" class="btn-recommend">See Detail</a>
+        </div>
+        `
+    }
+
+    recommendedDiv.innerHTML += `
+        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+        <a class="next" onclick="plusSlides(1)">&#10095;</a>
+    `
+    plusSlides(1)
+    plusSlides(-1)
+
+    for (let i = 0; i < showCards.length; i++) {
+        if (showCards[i].category === 'jasa') {
+            toEnglish = 'SERVICE'
+            tagBackground = 'tag-service'
+            } else if (showCards[i].category === 'produk') {
+            toEnglish = 'PRODUCT'
+            tagBackground = 'tag-product'
+        }
+        
 
         if (showCards[i].status === 'available') {
             availabletag = 'tag-available'
