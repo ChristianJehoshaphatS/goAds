@@ -4,6 +4,7 @@ let jobs = [
         asset:['https://media.suara.com/pictures/970x544/2016/03/02/o_1acqifml01nr7e021raml351jjba.jpg', 'https://www.nusabali.com/article_images/52893/jasa-cuci-kendaraan-banjir-pelanggan-800-2019-05-25-145328_0.jpg'],
         title: 'Jasa Cuci Mobil',
         itemName: 'Cuci Mobil Berkah',
+        deskripsi: 'Saat mengiklan pastikan untuk menyebutkan motto kami yaitu "Mobil anda kotor?? hubungi kami skuy!", lakukan pengiklanannya di YouTube, TikTok, Instagram',
         duration: 30,
         target: '100 pelanggan baru',
         milestone:[25, 50, 75, 100],
@@ -17,6 +18,7 @@ let jobs = [
         asset:['https://scrubnbubbles.com/wp-content/uploads/2022/05/cleaning-service.jpeg', 'https://www.healthyhomesutah.com/wp-content/uploads/Professional-Cleaning-Services-in-Plain-City-Utah-1000x423.jpg'],
         title: 'Jasa Cleaning Service',
         itemName: 'Clean Kinclong',
+        deskripsi: 'Tolong sebarkan jasa kami kerumah-rumah yang membutuhkan jasa Cleaning Service dan kami hanya menyediakan jasa kami di kota Tangrang dan sekitarnya saja, lakukan pengiklanannya di TikTok, Instagram',
         duration: 14,
         target: '10 pelanggan baru',
         milestone:[5, 8, 10],
@@ -30,6 +32,7 @@ let jobs = [
         asset:['https://images.tokopedia.net/img/cache/700/hDjmkQ/2023/2/8/158bc2e7-e712-4615-a782-d65fb73bfc06.jpg'],
         title: 'Tatakan Laptop Ergonomis',
         itemName: 'EvoMat',
+        deskripsi: 'Kami ingin produk Kami bisa di ketahui oleh orang banyak dan kami siap menjual produk kami keseluruh indonesia , lakukan pengiklanan di seluruh platform media sosial',
         duration: 21,
         target: '1000 barang terjual',
         milestone:[100, 500, 1000],
@@ -43,6 +46,7 @@ let jobs = [
         asset:['https://asset-2.tstatic.net/jambi/foto/bank/images/atik-53-teknisi-sekaligus-pemilik-toko-servis-elektronik-sedang-memperbaiki-tv-pelanggannya.jpg', 'https://www.buletinnusantara.com/wp-content/uploads/2020/06/IMG20200607150703-scaled.jpg'],
         title: 'Jasa Service Elektronik',
         itemName: 'goService',
+        deskripsi: 'Berikan deskripsi pada jasa kami yaitu kami siap dor tudor di area Tangerang Selatan dan sekitarnya, lakukan pengiklanan di facebook',
         duration: 30,
         target: '17 order service',
         milestone:[8, 12, 15, 17],
@@ -56,6 +60,7 @@ let jobs = [
         asset:['https://down-id.img.susercontent.com/file/87a176a1a1cbd423c6eb84aeaa77a32f', 'https://down-id.img.susercontent.com/file/43c4d66e6942d1885d109627fe395a58'],
         title: 'Botol Air dengan Reminder untuk Minum',
         itemName: 'Botol Reminder',
+        deskripsi: 'Sebar luaskan produk Botol Reminder kami di seluruh platform media sosial',
         duration: 60,
         target: '500 botol terjual',
         milestone:[100, 200, 300, 400, 500],
@@ -69,6 +74,7 @@ let jobs = [
         asset:['https://lzd-img-global.slatic.net/g/p/97a5baeb794b857f418351ac2c5d4e66.jpg_720x720q80.jpg'],
         title: 'Ballpoint Stylus',
         itemName: 'StylePen',
+        deskripsi: 'Tolong sebar luaskan produkkami di seluruh platform media sosial dan berikan deskripsi pada produk kami agar terlihat menarik',
         duration: 30,
         target: '800 unit terjual',
         milestone:[200,500,800],
@@ -82,6 +88,7 @@ let jobs = [
         asset:['https://www.tukangjakbar.com/wp-content/uploads/sites/17/2021/06/30.-SEDOT-WC.jpg'],
         title: 'Jasa Sedot WC',
         itemName: 'Sedot Berkah',
+        deskripsi:'Butuh agen iklan untuk memperluas operasi sedot WC kami, mohon buat draft strategi pemasaran usaha sedot WC. Eksekusi pengiklanan kami serahkan seluruhnya kepada anda.',
         duration: 45,
         target: '30 area',
         milestone:[5, 15, 30],
@@ -95,6 +102,7 @@ let jobs = [
         asset:['https://www.badut.id/wp-content/uploads/2015/11/IMG_20150822_172002.jpg'],
         title: 'Jasa Badut Ulangtahun',
         itemName: 'Lucuin',
+        deskripsi:'Sebarkan informasi jasa sewa badut kami di berbagai media sosial seperti Instagram, Tiktok, Facebook, dll. ',
         duration: 15,
         target: '10 acara',
         milestone:[2, 5, 10],
@@ -108,6 +116,7 @@ let jobs = [
         asset:['https://inaexport.id/uploads/Eksportir_Product/Image/7201/1618639677_Papertole%203D%20-%20Grebeg%20Gunungan_S2%20086%20-%20Gerebeg%20Gunungan.png','https://www.ponoko.com/blog/wp-content/uploads/2016/05/Vintage-Paper-Tole-2.jpg'],
         title: 'Seni Kriya Papertole',
         itemName: '5 Days Craft',
+        deskripsi:'Tolong pasarkan seni Papertole kami ke berbagai pecinta seni, Lakukan riset tentang seni kami dan riset pasarnya sebelum melakukan pengiklanan, silahkan kontak kami untuk bertanya lebih lanjut di nomor 081234567890',
         duration: 20,
         target: '80 papertole terjual',
         milestone:[10,40,60,80],
@@ -121,6 +130,7 @@ let jobs = [
         asset:['https://lzd-img-global.slatic.net/g/p/d66f3c0e565851a5280b126d198ad346.jpg_720x720q80.jpg'],
         title: 'Batik dan Daster',
         itemName: 'Fashion Mpok Sukinah',
+        deskripsi:'Sebarkan katalog busana batik dan daster kami ke berbagai media sosial seperti Twitter, Facebook, TikTok',
         duration: 7,
         target: '50 potong baju terjual',
         milestone:[10, 20, 30, 40, 50],
@@ -134,6 +144,7 @@ let jobs = [
         asset:['https://i0.wp.com/forestsnews.cifor.org/wp-content/uploads/2020/06/35104418773_ecf1afb468_k.jpg?resize=832%2C415&ssl=1'],
         title: 'Pengrajin Kayu Mebel',
         itemName: 'Sinar Jaya Furniture',
+        deskripsi:'Rekomendasikan mebel kami di berbagai platform media sosial kepada orang-orang yang sedang mencari mebel untuk interior ruangan',
         duration: 30,
         target: '70 mebel kayu terjual',
         milestone:[15, 45, 70],
@@ -147,6 +158,7 @@ let jobs = [
         asset:['https://id.yamaha.com/id/files/yms_for_adult_1200x480_617716d7715890330b4747baf27de82a.jpg'],
         title: 'Les Musik',
         itemName: 'Mahaya Music',
+        deskripsi:'Sebarkan informasi tentang bimbingan musik kami ke berbagai media sosial, pastikan menggunakan gambar dan video yang ada di website kami mahayamusic.com',
         duration: 30,
         target: '25 murid baru',
         milestone:[5, 10, 20, 25],
@@ -290,7 +302,7 @@ function showing(param) {
                     <div class="card-body">
                         <span class="tag ${tagBackground}">${toEnglish}</span>
                         <h4>${showCards[i].title}</h4>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam, aliquam minima consectetur tempore veniam doloribus quas voluptatibus ipsa quidem minus, non atque unde in beatae molestias, totam numquam eligendi. Aut.</p>
+                        <p>${showCards[i].deskripsi}</p>
                         <p>Rp. ${showCards[i].salary}</p>
                         <span class="tag ${availabletag}">${showCards[i].status}</span><br><br>
 
