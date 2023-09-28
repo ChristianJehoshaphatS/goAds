@@ -192,7 +192,6 @@ function recommend(param) {
             
         }
     }
-
     if (param === 'jasa') {
         return recommendedJasa
     }
@@ -226,10 +225,69 @@ function cards(param) {
     }
 }
 
-console.log(cards('jasa'));
+// AddEventListeners
 
-function show() {
-    
+document.getElementById("serviceCategory").addEventListener("click", showing('jasa'));
+document.getElementById("productsCategory").addEventListener("click", showing('produk'));
+
+
+
+function showing(param) {
+    //show in recommended
+    const showRecommended = recommend(param)
+    //show in cards
+    const showCards = cards(param)
 
     // tampilkan hasil filter
+    let output = {
+        recommended: showRecommended,
+        card:showCards
+    }
+    
+    // const recommendedDiv = document.getElementById('')
+    const cardsDiv = document.getElementById('cards')
+    cardsDiv.innerHTML = ''
+
+    for (let i = 0; i < showRecommended.length; i++) {
+        
+        
+    }
+
+    for (let i = 0; i < showCards.length; i++) {
+        let toEnglish = ''
+        let tagBackground = ''
+        if (showCards[i].category === 'jasa') {
+        toEnglish = 'SERVICE'
+        tagBackground = 'tag-service'
+        } else if (showCards[i].category === 'produk') {
+        toEnglish = 'PRODUCT'
+        tagBackground = 'tag-product'
+
+        }
+
+
+        cardsDiv.innerHTML += `
+                <a href="#" class="card-box">
+                    <div class="card-header">
+                        <img src="${showCards[i].asset[0]}" alt="">
+                    </div>
+                    <div class="card-body">
+                        <span class="tag tag-service">${toEnglish}</span>
+                        <h4>${showCards[i].title}</h4>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam, aliquam minima consectetur tempore veniam doloribus quas voluptatibus ipsa quidem minus, non atque unde in beatae molestias, totam numquam eligendi. Aut.</p>
+                        <p>Rp. ${showCards[i].salary}</p>
+                    </div>
+                </a>
+        `
+        
+        
+    }
+
+
+
+
+
+    return output
 }
+
+showing('jasa')
