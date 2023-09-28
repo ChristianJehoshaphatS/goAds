@@ -302,7 +302,7 @@ function showing(param) {
                     <div class="card-body">
                         <span class="tag ${tagBackground}">${toEnglish}</span>
                         <h4>${showCards[i].title}</h4>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam, aliquam minima consectetur tempore veniam doloribus quas voluptatibus ipsa quidem minus, non atque unde in beatae molestias, totam numquam eligendi. Aut.</p>
+                        <p>${showCards[i].deskripsi}</p>
                         <p>Rp. ${showCards[i].salary}</p>
                         <span class="tag ${availabletag}">${showCards[i].status}</span><br><br>
 
