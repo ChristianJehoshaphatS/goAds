@@ -304,10 +304,21 @@ function displayDetails(params) {
     const perId = filter(jobs, params)
     const cardDetail = document.getElementById(params)
     const detailPage = document.getElementById('details')
+    // detailPage.style.height = '0px'
     detailPage.innerHTML = `
     
     `
+    if (detailPage.classList.contains('shown')) {
+        detailPage.classList.remove('shown')
+        detailPage.classList.add ('hide')
+
+    } else {
+        detailPage.classList.remove('hide')
+        detailPage.classList.add ('shown')
+    }
     cardDetail.insertAdjacentElement('afterend', detailPage)
+    // detailPage.style.height = '80rem'
+
 
 
 

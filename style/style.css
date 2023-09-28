@@ -317,13 +317,51 @@ background: linear-gradient(to bottom, #FFD194, #D1913C);
   color: #fafafa;
 }
 
+
 .detail {
+    display: none;
+  }
+  
+  .detail.shown {
+    display: block;
     margin: 10rem;
     border-radius: 3rem;
     height: 80rem;
+
     width: 90%;
     background-color: var(--white);
-}
+    animation: fadeIn 0.5s;
+  }
+
+  .detail.hide {
+    display: block;
+    height: 0px;
+    animation: fadeout 0.5s;
+  }
+  
+  @keyframes fadeIn {
+    from {
+        height: 0px;
+        opacity: 0;
+    }
+  
+    to {
+        height: 80rem;
+        opacity: 1;
+    }
+  }
+
+  @keyframes fadeout {
+    from {
+        height: 80rem;
+        opacity: 1;
+    }
+  
+    to {
+        height: 0px;
+        opacity: 0;
+    }
+  }
 
 
 /* FOOTER */
