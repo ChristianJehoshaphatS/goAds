@@ -90,7 +90,7 @@ let jobs = [
         itemName: 'Sedot Berkah',
         deskripsi:'Butuh agen iklan untuk memperluas operasi sedot WC kami, mohon buat draft strategi pemasaran usaha sedot WC. Eksekusi pengiklanan kami serahkan seluruhnya kepada anda.',
         duration: 45,
-        target: '30 area',
+        target: '30 order diterima',
         milestone:[5, 15, 30],
         salary: 8_000_000,
         status: 'available',
@@ -104,7 +104,7 @@ let jobs = [
         itemName: 'Lucuin',
         deskripsi:'Sebarkan informasi jasa sewa badut kami di berbagai media sosial seperti Instagram, Tiktok, Facebook, dll. ',
         duration: 15,
-        target: '10 acara',
+        target: '10 acara berjalan',
         milestone:[2, 5, 10],
         salary: 1_500_000,
         status: 'taken',
@@ -132,7 +132,7 @@ let jobs = [
         itemName: 'Fashion Mpok Sukinah',
         deskripsi:'Sebarkan katalog busana batik dan daster kami ke berbagai media sosial seperti Twitter, Facebook, TikTok',
         duration: 7,
-        target: '50 potong baju terjual',
+        target: '50 baju terjual',
         milestone:[10, 20, 30, 40, 50],
         salary: 1_000_000,
         status: 'available',
@@ -146,7 +146,7 @@ let jobs = [
         itemName: 'Sinar Jaya Furniture',
         deskripsi:'Rekomendasikan mebel kami di berbagai platform media sosial kepada orang-orang yang sedang mencari mebel untuk interior ruangan',
         duration: 30,
-        target: '70 mebel kayu terjual',
+        target: '70 mebel terjual',
         milestone:[15, 45, 70],
         salary: 7_000_000,
         status: 'available',
@@ -372,7 +372,6 @@ function showing(param) {
 var idDetailsOld = 0;
 
 function displayDetails(params, fromRecommend = false) {
-    const perId = filter(jobs, params)
     const cardDetail = document.getElementById(params)
     const recommendDetail = document.getElementById('recomend')
     const newdetail = document.createElement('div')
@@ -380,15 +379,32 @@ function displayDetails(params, fromRecommend = false) {
         const oldDetail = document.getElementById(idDetailsOld)
         oldDetail.remove()
     }
-    console.log(perId);
-
+    
     newdetail.id = `detail${params}`
     idDetailsOld = newdetail.id
     newdetail.classList.add(`detail`)
+    newdetail.innerHTML = ``
 
-    newdetail.innerHTML = `
     
-    `
+    const perId = filter(jobs, params)
+    console.log(perId);
+    // images
+
+    for (let i = 0; i < perId.asset.length; i++) {
+        let imageLink = perId.asset[i]
+        newdetail.innerHTML += `
+        <img src="${imageLink}">
+        `
+    }
+    //milestone
+    for (let i = 0; i < perId.milestone.length; i++) {
+        let milestoneText = perId.target.split(' ')
+        let milestoneNumber = `${perId.milestone[i]} ${milestoneText[1]} ${milestoneText[2]}`
+        
+        newdetail.innerHTML += `
+        text +checkbox
+        `
+    }
     
 
     if (fromRecommend === false) {
