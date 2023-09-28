@@ -372,6 +372,8 @@ function showing(param) {
 var idDetailsOld = 0;
 
 function displayDetails(params, fromRecommend = false) {
+    const perId = filter(jobs, params)
+    console.log(perId);
     const cardDetail = document.getElementById(params)
     const recommendDetail = document.getElementById('recomend')
     const newdetail = document.createElement('div')
@@ -379,15 +381,91 @@ function displayDetails(params, fromRecommend = false) {
         const oldDetail = document.getElementById(idDetailsOld)
         oldDetail.remove()
     }
+
+
     
     newdetail.id = `detail${params}`
     idDetailsOld = newdetail.id
     newdetail.classList.add(`detail`)
-    newdetail.innerHTML = ``
+    newdetail.innerHTML = `
+    <div class="product-img">
+        <div class="display-img">
+            <div class="img-showcase">
+                <img src="assets/product/product-1.webp" alt="">
+                <img src="assets/product/product-1.webp" alt="">
+                <img src="assets/product/product-1.webp" alt="">
+                <img src="assets/product/product-1.webp" alt="">
+            </div>
+        </div>
+        <div class="img-select">
+            <div class="img-item">
+                <a href="#" data-id="1">
+                    <img src="assets/product/product-item-1.jpeg" alt="">
+                </a>
+            </div>
+            <div class="img-item">
+                <a href="#" data-id="2">
+                    <img src="assets/product/product-item-1.jpeg" alt="">
+                </a>
+            </div>
+            <div class="img-item">
+                <a href="#" data-id="3">
+                    <img src="assets/product/product-item-1.jpeg" alt="">
+                </a>
+            </div>
+            <div class="img-item">
+                <a href="#" data-id="4">
+                    <img src="assets/product/product-item-1.jpeg" alt="">
+                </a>
+            </div>
+        </div>
+    </div>
+                <div class="product-content">
+                    <h2 class="product-title">${perId.category}</h2>
+                    
+                    <div class="product-detail">
+                        <h2>${perId.title}</h2>
+                        <p>${perId.deskripsi}</p>
+                        <p>Duration: ${perId.duration}</p>
+                        <p>Target: ${perId.target}</p>
+                        <div class="product-price">
+                            <p class="price">Rp ${perId.salary}</p>
+                        </div>
+                        <button class="btn-accept" onclick="showMilestone(${perId.id})">Accept</button>
+                        
+                        
+                        
+    `
 
     
-    const perId = filter(jobs, params)
-    console.log(perId);
+    for (let i = 0; i < perId.milestone.length; i++) {
+        let milestoneText = perId.target.split(' ')
+        let milestoneNumber = `${perId.milestone[i]}`
+        let milestoneNumberText = `${perId.milestone[i]} ${milestoneText[1]} ${milestoneText[2]}`
+        console.log(milestoneText);
+        console.log(milestoneNumber);
+        newdetail.innerHTML += `
+                <input style="display: none" type="checkbox" id="${milestoneNumber}" name="${milestoneNumber}${milestoneText[1]}${milestoneText[2]}" value="">
+                <label style="display: none" id="${milestoneNumber}l" for="${milestoneNumber}${milestoneText[1]}${milestoneText[2]}">${milestoneNumberText}</label><br>
+                
+        `
+    }
+
+    newdetail.innerHTML += `
+    
+    
+    <!-- Complete / Cancel -->
+    <div id="compcanBtn" class="btn-compcan" style="display: none;">
+        <button class="btn-complete">Complete Order</button>
+        <button class="btn-cancel">Cancel Order</button>
+    </div>
+</div>
+</div>
+
+    `
+
+    
+   
     // images
 
     for (let i = 0; i < perId.asset.length; i++) {
@@ -397,14 +475,6 @@ function displayDetails(params, fromRecommend = false) {
         `
     }
     //milestone
-    for (let i = 0; i < perId.milestone.length; i++) {
-        let milestoneText = perId.target.split(' ')
-        let milestoneNumber = `${perId.milestone[i]} ${milestoneText[1]} ${milestoneText[2]}`
-        
-        newdetail.innerHTML += `
-        text +checkbox
-        `
-    }
     
 
     if (fromRecommend === false) {
@@ -434,3 +504,21 @@ function displayDetails(params, fromRecommend = false) {
 
 
 }
+
+function showMilestone(params) {
+    const perId = filter(jobs, params)
+    perId.status = 'taken'
+    const milestones = perId.milestone
+    console.log(milestones);
+    for (let i = 0; i < milestones.length; i++) {
+        const eachMilestone = document.getElementById(milestones[i])
+        const eachMilestoneLabel = document.getElementById(`${milestones[i]}l`)
+
+        eachMilestone.style=''
+        eachMilestoneLabel.style=''
+    }
+    const compCanBtn = document.getElementById('compcanBtn')
+    compCanBtn.style=''
+}
+
+showMilestone
