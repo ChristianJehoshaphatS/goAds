@@ -279,14 +279,14 @@ function showSlides(n) {
     dots[i].className = dots[i].className.replace(" active", "");
   }
   slides[slideIndex-1].style.display = "block";
-  dots[slideIndex-1].className += " active";
+//   dots[slideIndex-1].className += " active";
 }
 
-
+var nowShowing = ''
 
 function showing(param) {
-    alert('halo')
-
+    nowShowing = param
+    
     //show in recommended
     const showRecommended = recommend(param)
     //show in cards
@@ -387,6 +387,13 @@ function displayDetails(params, fromRecommend = false) {
         oldDetail.remove()
     }
 
+    let toEnglish = ''
+    if (perId.category === 'jasa') {
+        toEnglish = 'SERVICE'
+    } else if (perId.category=== 'produk') {
+        toEnglish = "PRODUCT"
+    }
+
 
     
     newdetail.id = `detail${params}`
@@ -394,12 +401,12 @@ function displayDetails(params, fromRecommend = false) {
     newdetail.classList.add(`detail`)
     newdetail.innerHTML = `
 
-    <div class="small-container">
+    <div id="detailContainer" class="small-container">
             <div class="detail-img">
                 <img src="${perId.asset[0]}" class="gambar-sepatu">
             </div>
-            <div class="col-2">
-                <h1>${perId.category}</h1>
+            <div id="newCol" class="col-2">
+                <h1>${toEnglish}</h1>
                 <h3>${perId.title}</h3>
                 <small>${perId.deskripsi}</small>
                 <p>Duration: ${perId.duration} days</p>
@@ -407,11 +414,13 @@ function displayDetails(params, fromRecommend = false) {
                 <div class="price">
                     <p class="price">Price: Rp. ${perId.salary}</p>
                 </div>
+                <div class="price">
+                    <p id="statusBtn" class="price">Status: ${perId.status}</p>
+                </div>
                 <a id="acceptBtn" class="btn-accept" onclick="showMilestone(${perId.id}, 'show')">Accept &#x2794;</a>
                 <br>
 
-                
-                 
+                      
     `
 
     //milestone
@@ -420,10 +429,8 @@ function displayDetails(params, fromRecommend = false) {
         let milestoneText = perId.target.split(' ')
         let milestoneNumber = `${perId.milestone[i]}`
         let milestoneNumberText = `${perId.milestone[i]} ${milestoneText[1]} ${milestoneText[2]}`
-        console.log(milestoneText);
-        console.log(milestoneNumber);
         newdetail.innerHTML += `
-                <input style="display: none" type="checkbox" id="${milestoneNumber}" name="${milestoneNumber}${milestoneText[1]}${milestoneText[2]}" value="">
+                <input class="milestone" style="display: none" type="checkbox" id="${milestoneNumber}" name="${milestoneNumber}${milestoneText[1]}${milestoneText[2]}" value="">
                 <label style="display: none" id="${milestoneNumber}l" for="${milestoneNumber}${milestoneText[1]}${milestoneText[2]}">${milestoneNumberText}</label><br>
         `
     }
@@ -432,19 +439,14 @@ function displayDetails(params, fromRecommend = false) {
 
 
                 <!-- Complete / Cancel -->
-                <div id="compcanBtn" class="btn-compcan" style="display: none;">
-                    <button onclick="completeOrder()" class="btn-complete">Complete Order</button>
+                <div id="compcanBtn" class="btn-compcan completeCancel" style="display: none;">
+                    <button onclick="completeOrder(${perId.id})" class="btn-complete">Complete Order</button>
                     <button onclick="showMilestone(${perId.id}, 'hide')" class="btn-cancel">Cancel Order</button>
                 </div>
             </div>
         </div>
 
     `
-
-    
-   
-    // images   
-
     if (fromRecommend === false) {
         if (newdetail.classList.contains('shown')) {
             newdetail.classList.remove('shown')
@@ -477,6 +479,7 @@ function showMilestone(params, toggle) {
     const perId = filter(jobs, params)
     perId.status = 'taken'
     const milestones = perId.milestone
+    const statusButton = document.getElementById('statusBtn')
 
     if (toggle === 'show') {
         console.log('show');
@@ -485,7 +488,7 @@ function showMilestone(params, toggle) {
             const eachMilestoneLabel = document.getElementById(`${milestones[i]}l`)
             const accept = document.getElementById('acceptBtn')
             accept.style.display = 'none'
-    
+            statusButton.innerText = 'Status: Taken'
             eachMilestone.style=''
             eachMilestoneLabel.style=''
         }
@@ -498,6 +501,7 @@ function showMilestone(params, toggle) {
             const eachMilestone = document.getElementById(milestones[i])
             const eachMilestoneLabel = document.getElementById(`${milestones[i]}l`)
             const accept = document.getElementById('acceptBtn')
+            statusButton.innerText = 'Status: Available'
 
             accept.style=''
             eachMilestone.style.display = 'none'
@@ -509,12 +513,29 @@ function showMilestone(params, toggle) {
     
 }
 
-function completeOrder() {
+function completeOrder(param) {
+    console.log(param);
+
+    let temp = []
+    for (let i = 0; i < jobs.length; i++) {
+        if (jobs[i].id !== param) {
+            temp.push(jobs[i])
+        } 
+    }
+    jobs = temp
+    showing(nowShowing)
     // delete database
     // jalanin function show lagi
+    const completeArea = document.getElementById('compcanBtn')
+    document.getElementById('statusBtn').innerHTML = 'Status: Completed'
+    completeArea.innerHTML = 'congrats'
 
+}
+
+function deleteDetail(params) {
     if (document.getElementById(idDetailsOld)) {
         const oldDetail = document.getElementById(idDetailsOld)
         oldDetail.remove()
     }
+    
 }

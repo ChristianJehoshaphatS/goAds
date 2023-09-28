@@ -590,7 +590,7 @@ background: linear-gradient(to bottom, #FFD194, #D1913C);
     display: block;
     margin: 1rem 10rem;
     border-radius: 3rem;
-    height: 80rem;
+    height: auto;
     width: 90%;
     background-color: var(--white);
     animation: fadeIn 3s;
@@ -600,7 +600,7 @@ background: linear-gradient(to bottom, #FFD194, #D1913C);
     display: block;
     margin: 1rem 10rem;
     border-radius: 3rem;
-    height: 80rem;
+    height: auto;
     width: 78%;
     background-color: var(--white);
     animation: fadeIn 3s;
@@ -619,14 +619,14 @@ background: linear-gradient(to bottom, #FFD194, #D1913C);
     }
   
     to {
-        height: 80rem;
+        height: 100%;
         opacity: 1;
     }
   }
 
   @keyframes fadeout {
     from {
-        height: 80rem;
+        height: auto;
         opacity: 1;
     }
   
@@ -662,13 +662,32 @@ background: linear-gradient(to bottom, #FFD194, #D1913C);
 }
 
 .detail-img {
+    object-fit: cover;
+
+    height: 100%;
     flex-basis: 50%;
     min-width: 300px;
 }
 
 .detail-img img {
+    height: 30rem;
+    object-fit:inherit;
+    
     width: 100%;
-    padding: 0 3rem;
+    padding: 0 3rem 0 0;
+    border-radius: 3rem 0;
+}
+
+.milestone {
+    margin: 0 0 0 50%;
+}
+
+.milestoneText {
+    bottom: 200px;
+}
+
+.completeCancel {
+    margin: 0 0 0 50%;
 }
 
 
