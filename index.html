@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>goAds: Best Ads Outsourcing Partner</title>
     <link rel="stylesheet" href="style/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
     <link rel="Website icon" type="png" href="assets/logo/logo-no-background.png">
 </head>
 <body>
@@ -130,35 +131,96 @@
     
     <!-- Slideshow container -->
     <div id="recomend" class="slideshow-container"></div>
-  <br>
-  
-  <!-- The dots/circles -->
-  <div style="text-align:center">
-    <span class="dot" onclick="currentSlide(1)"></span>
-    <span class="dot" onclick="currentSlide(2)"></span>
-    <span class="dot" onclick="currentSlide(3)"></span>
-  </div>
-
+    <br>
     
-    <!-- NEXT PREVIOUS BUTTON -->
-    <!-- <button id="nextBtn" class="btn-slide">&#10095;</button>
-    <button id="prevBtn" class="btn-slide">&#10094;</button> -->
-        
-    <!-- DOTS/Progress Dots -->
-    <!-- <div style="text-align: center">
+    <!-- The dots/circles -->
+    <!-- <div style="text-align:center">
         <span class="dot" onclick="currentSlide(1)"></span>
         <span class="dot" onclick="currentSlide(2)"></span>
         <span class="dot" onclick="currentSlide(3)"></span>
     </div> -->
+    
+    
+    <!-- NEXT PREVIOUS BUTTON -->
+    <!-- <button id="nextBtn" class="btn-slide">&#10095;</button>
+        <button id="prevBtn" class="btn-slide">&#10094;</button> -->
         
-    <!-- CARD START -->
+        <!-- DOTS/Progress Dots -->
+        <!-- <div style="text-align: center">
+            <span class="dot" onclick="currentSlide(1)"></span>
+            <span class="dot" onclick="currentSlide(2)"></span>
+            <span class="dot" onclick="currentSlide(3)"></span>
+        </div> -->
+        
+        <!-- CARD START -->
         <div id="cards" class="card"></div>
         <!-- CARD END -->
         
-        
         <!--  DETAILS ELEMENT-->
-        <div class="detail" id="details">
-            
+        <div class="detail-wrapper" id="details">
+            <div class="detail">
+                <div class="product-img">
+                    <div class="display-img">
+                        <div class="img-showcase">
+                            <img src="assets/product/product-1.webp" alt="">
+                            <img src="assets/product/product-1.webp" alt="">
+                            <img src="assets/product/product-1.webp" alt="">
+                            <img src="assets/product/product-1.webp" alt="">
+                        </div>
+                    </div>
+                    <div class="img-select">
+                        <div class="img-item">
+                            <a href="#" data-id="1">
+                                <img src="assets/product/product-item-1.jpeg" alt="">
+                            </a>
+                        </div>
+                        <div class="img-item">
+                            <a href="#" data-id="2">
+                                <img src="assets/product/product-item-1.jpeg" alt="">
+                            </a>
+                        </div>
+                        <div class="img-item">
+                            <a href="#" data-id="3">
+                                <img src="assets/product/product-item-1.jpeg" alt="">
+                            </a>
+                        </div>
+                        <div class="img-item">
+                            <a href="#" data-id="4">
+                                <img src="assets/product/product-item-1.jpeg" alt="">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-content">
+                    <h2 class="product-title">SERVICE</h2>
+                    <div class="product-price">
+                        <p class="price">Rp 23.000.000</p>
+                    </div>
+                    <div class="product-detail">
+                        <h2>CUCI SEPATU ONLINE</h2>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut quibusdam dolorum suscipit, repellendus voluptate, repellat neque voluptatem nam, dolorem sunt pariatur exercitationem debitis ex cupiditate laborum? Delectus optio aspernatur fuga.</p>
+                        <p>Duration: 30 days</p>
+                        <p>Target: 100 Pelanggan Baru</p>
+                        <button class="btn-accept">Accept</button>
+                        
+                        <!-- Milestones -->
+                        <input type="checkbox" id="25pembelibaru" name="25pembelibaru" value="">
+                        <label for="25pembelibaru">25 Pembeli Baru</label><br>
+                        <input type="checkbox" id="50pembelibaru" name="50pembelibaru" value="">
+                        <label for="50pembelibaru">50 Pembeli Baru</label><br>
+                        <input type="checkbox" id="75pembelibaru" name="75pembelibaru" value="">
+                        <label for="75pembelibaru">75 Pembeli Baru</label><br>
+                        <input type="checkbox" id="100pembelibaru" name="100pembelibaru" value="">
+                        <label for="100pembelibaru">100 Pembeli Baru</label><br>
+
+                        <!-- Complete / Cancel -->
+                        <div class="btn-compcan">
+                            <button class="btn-complete">Complete Order</button>
+                            <button class="btn-cancel">Cancel Order</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
         
         <!-- BORDER LAGI INI LAST BENER
